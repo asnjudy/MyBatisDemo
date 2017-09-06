@@ -3,25 +3,44 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <!--    <properties>
+            <property name="driver" value="com.mysql.jdbc.Driver" />
+            <property name="uri" value="jdbc:mysql://localhost:3306/mybatis?useSSL=false" />
+            <property name="username" value="password" />
+            <property name="password" value="root123" />
+        </properties>-->
+    <properties resource="jdbc.properties" />
+
     <typeAliases>
-        <typeAlias alias="role" type="com.asn.mybatis.chapter2.po.Role" />
+        <typeAlias alias="role" type="com.asn.mybatis.chapter2.po.Role"/>
     </typeAliases>
+
+    <typeHandlers>
+        <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="com.asn.mybatis.chapter2.typeHandler.Sex" />
+    </typeHandlers>
+
+    <objectFactory type="com.asn.mybatis.chapter2.objectFactory.MyObjectFactory">
+        <property name="name" value="MyObjectFactory" />
+    </objectFactory>
+
 
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC">
-                <property name="autoCommit" value="false" />
+                <property name="autoCommit" value="false"/> <!-- 设置数据源不自动提交事务 -->
             </transactionManager>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver" />
-                <property name="url" value="jdbc:mysql://localhost:3306/mybatis" />
-                <property name="username" value="root" />
-                <property name="password" value="root123" />
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
             </dataSource>
         </environment>
     </environments>
 
     <mappers>
-        <mapper resource="" />
+        <mapper resource="com/asn/mybatis/chapter2/mapper/RoleMapper.xml"/>
+        <mapper resource="com/asn/mybatis/chapter2/mapper/UserMapper.xml"/>
     </mappers>
 </configuration>

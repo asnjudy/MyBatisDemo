@@ -1,23 +1,19 @@
-package com.asn.mybatis.chapter2.po;
+package com.asn.mybatis.chapter2.param;
 
 /**
- * Created by asnju on 2017/9/5.
+ * Created by xuwentang on 2017/9/6.
  */
-public class Role {
+public class RoleParam {
 
-    private Long id;
     private String roleName;
     private String note;
 
-    public Long getId() {
-        return id;
+    public RoleParam(String note, String roleName) {
+        this.note = note;
+        this.roleName = roleName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getRoleName() {
+    private String getRoleName() {
         return roleName;
     }
 

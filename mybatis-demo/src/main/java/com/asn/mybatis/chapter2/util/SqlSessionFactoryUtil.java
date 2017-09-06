@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLException;
 
 /**
  * Created by asnju on 2017/9/5.
